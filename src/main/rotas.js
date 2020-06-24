@@ -1,0 +1,20 @@
+import React from 'react'
+
+import Login from '../views/login'
+import CadastroUsuario from '../views/cadastroUsuario'
+
+// importar os seguintes componentes
+import {Route, Switch, HashRouter} from 'react-router-dom'
+
+function Rotas() {
+    return (
+        <HashRouter>
+            <Switch>
+                <Route path="/login" component={Login} />
+                <Route path="/cadastroUsuario" component={CadastroUsuario} />
+            </Switch>
+        </HashRouter>
+    )
+}
+
+export default Rotas
