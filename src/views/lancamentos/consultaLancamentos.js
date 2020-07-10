@@ -82,6 +82,10 @@ class ConsultaLancamentos extends React.Component {
         this.setState({ showConfirmDialog: false, lancamentoDeletar: {} })
     }
 
+    preparaFormularioCadastro = () => {
+        this.props.history.push('/cadastro-lancamentos')
+    }
+
     render() {
         const meses = this.service.obterListaMeses()
         const tipos = this.service.obterListaTipos()
@@ -122,7 +126,7 @@ class ConsultaLancamentos extends React.Component {
                             </FormGroup>
 
                             <button type="button" className="btn btn-success" onClick={this.buscar} >Buscar</button>
-                            <button type="button" className="btn btn-danger">Cadastrar</button>
+                            <button type="button" className="btn btn-danger" onClick={this.preparaFormularioCadastro} >Cadastrar</button>
 
                         </div>
                     </div>
