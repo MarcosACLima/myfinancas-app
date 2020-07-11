@@ -58,7 +58,7 @@ class ConsultaLancamentos extends React.Component {
     }
 
     editar = (id) => {
-        console.log('Editando o lançamento', id)
+        this.props.history.push(`/cadastro-lancamentos/${id}`)
     }
 
     deletar = () => {

@@ -19,7 +19,8 @@ class CadastroLancamentos extends React.Component {
         mes: '',
         ano: '',
         tipo:'',
-        status: ''
+        status: '',
+        usuario: null
     }
 
     handleChange = (event) => {
@@ -27,6 +28,35 @@ class CadastroLancamentos extends React.Component {
         const name = event.target.name
 
         this.setState({ [name] : value })
+    }
+
+    componentDidMount() {
+
+        const params = this.props.match.params
+        // se nao passei id como parametro estou apenas entrando no formulario de cadastro
+        if(params.id) {
+            this.service.obtertPorId(params.id)
+                .then(response => {
+                    this.setState( {...response.data} )
+                })
+                .catch(erros => {
+                    messages.mensagemErro(erros.response.data)
+                })
+        }
+    }
+
+    atualizar = () => {
+        const { descricao, valor, mes, ano, tipo, usuario} = this.state
+        const lancamento = { descricao, valor, mes, ano, tipo, usuario }
+    
+        this.service
+            .atualizar(lancamento)
+            .then(response => {
+                this.props.history.push('/consulta-lancamentos')
+                messages.mensagemSucesso('Lançamento atualizado com sucesso!')
+            }).catch(error => {
+                messages.mensagemErro(error.response.data)
+            }) 
     }
 
     submit = () => {
@@ -100,6 +130,7 @@ class CadastroLancamentos extends React.Component {
                 <div className="row">
                     <div className="col-md-6">
                         <button onClick={this.submit} className="btn btn-success">Salvar</button>
+                        <button onClick={this.atualizar} className="btn btn-primary">Atualizar</button>
                         <button onClick={e => this.props.history.push('/consulta-lancamentos')} className="btn btn-danger">Cancelar</button>
                     </div>
                 </div>
