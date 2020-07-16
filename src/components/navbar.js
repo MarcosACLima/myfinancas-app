@@ -1,13 +1,22 @@
 import React from 'react'
 
 import NavbarItem from "./navbarItem"
+import AuthService from "../app/service/authService"
+
+const deslogar = () => {
+    AuthService.removerUsuarioAutenticado()
+}
+
+const isUsuarioAutenticado = () => {
+    return AuthService.isUsuarioAutenticado()
+}
 
 function Navbar() {
 
     return (
         <div className="navbar navbar-expand-lg fixed-top navbar-dark bg-primary">
             <div className="container">
-                <a href="https://bootswatch.com/" className="navbar-brand">Minhas Finanças</a>
+                <a href="#/home" className="navbar-brand">Minhas Finanças</a>
                 <button className="navbar-toggler" type="button"
                     data-toggle="collapse"
                     data-target="#navbarResponsive"
@@ -17,10 +26,10 @@ function Navbar() {
                 </button>
                 <div className="collapse navbar-collapse" id="navbarResponsive">
                     <ul className="navbar-nav">
-                        <NavbarItem href="#/home" label="Home" />
-                        <NavbarItem href="#/cadastro-usuarios" label="Usuários" />
-                        <NavbarItem href="#/consulta-lancamentos" label="Lançamentos" />
-                        <NavbarItem href="#/login" label="Login" />
+                        <NavbarItem href="#/home" label="Home" render={isUsuarioAutenticado()} />
+                        <NavbarItem href="#/cadastro-usuarios" label="Usuários" render={isUsuarioAutenticado()} />
+                        <NavbarItem href="#/consulta-lancamentos" label="Lançamentos" render={isUsuarioAutenticado()} />
+                        <NavbarItem href="#/login" label="Sair" onClick={deslogar} render={isUsuarioAutenticado()} />
                     </ul>
 
                 </div>
