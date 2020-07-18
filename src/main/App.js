@@ -3,6 +3,7 @@ import React from 'react';
 // importar rotas ao inves dos componentes
 import Rotas from './rotas'
 import Navbar from '../components/navbar'
+import ProvedorAutenticacao from './provedorAutenticacao'
 
 import 'toastr/build/toastr.min'
 
@@ -18,12 +19,12 @@ class App extends React.Component {
 
   render() {
     return (
-      <>
+      <ProvedorAutenticacao>
         <Navbar />
         <div className="container">
           <Rotas />
         </div>
-      </>
+      </ProvedorAutenticacao>
     )
   }
 }
