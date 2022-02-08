@@ -1,3 +1,28 @@
+# Sistemas de Controle de Finanças, App com React JS e Booststrap
+
+Sistemas de controle de gastos financeiros pessoal, parte do Front-End com React JS, Node JS e Bootstrap
+
+## Tecnologias Utilizadas
+
+- JavaScript
+- React JS
+- Node JS
+- Bootstrap
+- Yarn
+- Axios (Cliente HTTP baseado em promessas para fazer requisições HTTP)
+- Bootswacht
+- PrimeReact
+- JWT
+
+## Ferramenta
+
+- Visual Studio Code- 
+
+#
+#
+#
+
+
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ## Available Scripts
